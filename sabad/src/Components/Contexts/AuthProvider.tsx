@@ -1,5 +1,4 @@
-import { createContext, useContext, useState  } from "react";
-import AuthType from "../../Types/auth";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext({
   auth: {
@@ -12,7 +11,7 @@ const AuthContext = createContext({
     field_of_study_id: 0,
     field_of_study_name: "",
   },
-  setAuth: (auth: AuthType | {}) => {}
+  setAuth: (auth: any) => {},
 });
 
 export const useAuth = () => {

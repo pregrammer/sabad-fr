@@ -91,7 +91,7 @@ function Login() {
         draggable
         pauseOnHover
       />
-      <div className="design">
+      <div className="login-design">
         <div className="design-top"></div>
 
         <form onSubmit={formik.handleSubmit}>

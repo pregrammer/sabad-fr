@@ -1,19 +1,38 @@
-import { useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "../../api/axios";
+import Login from "../../Pages/Login";
+import { useAuth } from "../Contexts/AuthProvider";
+import LoadingModal from "../Modals/LoadingModal";
 
 const IsAuth = () => {
-  const [signedIn, setSignedIn] = useState(false);
-  (async function get_user() {
-    try {
-      await axios.get("/users/user", {
-        withCredentials: true,
-      });
-      setSignedIn(true);
-    } catch (error) {}
-  })();
+  const { setAuth } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSigned, setIsSigned] = useState(false);
 
-  return signedIn ? <Navigate to="/panel" /> : <Outlet />;
+  useEffect(() => {
+    async function get_user() {
+      try {
+        const response = await axios.get("/users/user");
+        if (response.status === 200) {
+          setAuth(response.data.user);
+          setIsLoading(false);
+          setIsSigned(true);
+        }
+      } catch (error) {
+        setIsLoading(false);
+      }
+    }
+    get_user();
+  }, []);
+
+  if (isLoading) {
+    return <LoadingModal />;
+  } else if (isSigned) {
+    return <Navigate to="/panel" />;
+  } else {
+    return <Login />;
+  }
 };
 
 export default IsAuth;

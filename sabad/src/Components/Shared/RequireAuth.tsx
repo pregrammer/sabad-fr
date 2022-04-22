@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import axios from "../../api/axios";
 import { useAuth } from "../Contexts/AuthProvider";
 
-const RequireAuth = ({ allowedRoles }: any) => {
+const RequireAuth = () => {
   const { auth, setAuth } = useAuth();
   const location = useLocation();
   const [isSignedIn, setIsSignedIn] = useState(true);
@@ -12,25 +12,27 @@ const RequireAuth = ({ allowedRoles }: any) => {
   // if you still signed in, you gotta have jwt token in your cookie;
   // if you have jwt, get_user method give user from server and set it to auth context;
   // if you dont have jwt, server gives 401 back to you; then you navigate user to login.
-  async function get_user() {
-    try {
-      const response = await axios.get("/users/user");
-      if (response.status === 200) {
-        setAuth(response.data.user);
+
+  useEffect(() => {
+    async function get_user() {
+      try {
+        const response = await axios.get("/users/user");
+        if (response.status === 200) {
+          setAuth(response.data.user);
+        }
+      } catch (error: any) {
+        if (error.response?.status === 401 || error.response?.status === 403) {
+          setIsSignedIn(false);
+        }
       }
-    } catch (error) {
-      setIsSignedIn(false);
     }
-  }
+    if (Object.keys(auth).length === 0) {
+      get_user();
+    }
+  }, []);
 
-  if (Object.keys(auth).length === 0) {
-    get_user();
-  }
-
-  return isSignedIn && allowedRoles.includes(auth.role) ? (
+  return isSignedIn ? (
     <Outlet />
-  ) : isSignedIn && allowedRoles.includes(auth.role) === false ? (
-    <h1>you're not allowed</h1>
   ) : (
     <Navigate to="/" state={{ from: location }} replace />
   );

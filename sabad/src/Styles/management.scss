@@ -1,0 +1,60 @@
+$base-bgc-color: #f5f8fb;
+$tab-bgc-color: #595858;
+$untab-text-color: #474747;
+
+.management-base {
+  background-color: $base-bgc-color;
+
+  aside {
+    width: 17%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+
+    .un-tab {
+      width: 60%;
+      padding: 10px 20px 10px 0;
+      text-align: right;
+      background-color: #fff;
+      color: $untab-text-color;
+      text-decoration: none;
+      font-family: vazir;
+      font-size: 13px;
+      border-radius: 8px;
+      margin-top: 20px;
+      user-select: none;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .tab {
+      width: 60%;
+      padding: 10px 20px 10px 0;
+      text-align: right;
+      background-color: $tab-bgc-color;
+      color: #fff;
+      text-decoration: none;
+      font-family: vazir;
+      font-size: 13px;
+      border-radius: 8px;
+      margin-top: 20px;
+      user-select: none;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+  }
+
+  .content {
+    background-color: #fff;
+    width: 83%;
+    min-height: 88vh;
+    padding-top: 94px;
+    direction: rtl;
+
+    
+  }
+}

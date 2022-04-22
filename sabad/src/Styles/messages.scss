@@ -1,0 +1,173 @@
+$base-bgc-color: #f5f8fb;
+$tab-bgc-color: #595858;
+$untab-text-color: #474747;
+
+.messages-base {
+  background-color: $base-bgc-color;
+
+  aside {
+    width: 17%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+
+    .un-tab {
+      width: 60%;
+      padding: 10px 20px 10px 0;
+      text-align: right;
+      background-color: #fff;
+      color: $untab-text-color;
+      text-decoration: none;
+      font-family: vazir;
+      font-size: 13px;
+      border-radius: 8px;
+      margin-top: 20px;
+      user-select: none;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .tab {
+      width: 60%;
+      padding: 10px 20px 10px 0;
+      text-align: right;
+      background-color: $tab-bgc-color;
+      color: #fff;
+      text-decoration: none;
+      font-family: vazir;
+      font-size: 13px;
+      border-radius: 8px;
+      margin-top: 20px;
+      user-select: none;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .new-message-badge {
+      padding: 2px 7px 2px 7px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 115px;
+      left: 60px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .content {
+    background-color: #fff;
+    width: 83%;
+    min-height: 88vh;
+    padding-top: 94px;
+    direction: rtl;
+
+    .message {
+      width: 90%;
+      border: 1px solid rgb(144, 144, 144);
+      margin-right: 3.5%;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      padding: 20px;
+      font-family: vazir;
+      user-select: none;
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .extra {
+          font-size: 13.5px;
+
+          .is-seen {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .down {
+        font-size: 14.5px;
+        line-height: 30px;
+        margin-top: 30px;
+
+        .title {
+          margin-bottom: 10px;
+          font-size: 15px;
+        }
+      }
+    }
+
+    .message:hover {
+      box-shadow: 0 0 8px 4px rgba(86, 86, 86, 0.2);
+    }
+
+    .send-container{
+      width: 80%;
+      height: 500px;
+      //border: 1px solid #000;
+      margin-right: 10%;
+
+      form{
+        display: flex;
+        flex-direction: column;
+
+        input, textarea{
+          padding: 15px;
+          font-family: vazir;
+          border-radius: 8px;
+          border: 1px solid rgb(134, 134, 134);
+        }
+
+        textarea{
+          height: 250px;
+          resize: none;
+          margin-top: 30px;
+        }
+        
+        .error{
+          font-family: vazir;
+          color: red;
+          font-size: 14px;
+          margin-top: 5px;
+        }
+
+        .down{
+          margin-top: 30px;
+        }
+
+        label{
+          font-family: vazir;
+        }
+
+        select{
+          font-family: vazir;
+          padding: 10px;
+          margin-right: 15px;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        button{
+          font-family: vazir;
+          padding: 13px 40px 13px 40px;
+          margin-right: 15px;
+          border-radius: 10px;
+          border: none;
+          cursor: pointer;
+          background-color: rgb(28, 244, 78);
+
+          .send-icon{
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}

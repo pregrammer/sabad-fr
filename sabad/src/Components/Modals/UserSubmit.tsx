@@ -1,9 +1,5 @@
-import React from 'react'
-
 function UserSubmit() {
-  return (
-    <div>UserSubmit</div>
-  )
+  return <div>UserSubmit</div>;
 }
 
-export default UserSubmit
+export default UserSubmit;

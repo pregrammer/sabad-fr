@@ -1,0 +1,73 @@
+$aside-bgc: #262b40;
+$aside-un-tab: #2e3650;
+$aside-un-text-tab: #eaedf2;
+$aside-tab: #61dafb;
+$aside-text-tab: #1e2233;
+
+.base-aside {
+  width: 20vw;
+  height: 100vh;
+  background-color: $aside-bgc;
+  position: fixed;
+  top: 0;
+  right: -20vw;
+  transition: right 0.2s;
+  z-index: 5;
+
+  .top-aside {
+    height: 65px;
+    border-bottom: 1px solid rgb(35, 199, 155);
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    span {
+      color: $aside-un-text-tab;
+      font-family: vazir;
+      font-style: 13.5px;
+      margin-right: 7px;
+    }
+  }
+
+  .tabs {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .un-tab {
+      width: 75%;
+      padding: 13px 20px 13px 0;
+      text-align: right;
+      background-color: $aside-un-tab;
+      color: $aside-un-text-tab;
+      text-decoration: none;
+      font-family: vazir;
+      font-size: 13px;
+      border-radius: 13px;
+      margin-top: 20px;
+      user-select: none;
+    }
+
+    .tab {
+      width: 75%;
+      padding: 13px 20px 13px 0;
+      text-align: right;
+      background-color: $aside-tab;
+      color: $aside-text-tab;
+      text-decoration: none;
+      font-family: vazir;
+      font-size: 13px;
+      border-radius: 13px;
+      margin-top: 20px;
+      user-select: none;
+    }
+  }
+}
