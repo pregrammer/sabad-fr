@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import MessagesAside from "../../../Components/Panel/Messages/MessagesAside";
 import "../../../Styles/messages.scss";
 
-
 function Messages() {
   return (
     <>

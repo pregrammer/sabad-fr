@@ -15,6 +15,15 @@ body {
   font-size: 13.5px;
 }
 
+.swal2-container h2,
+.swal2-container button{
+  font-family: vazir !important;
+}
+
+.swal2-container h2{
+  font-size: 22px;
+}
+
 .bgc-loading-modal {
   position: fixed;
   z-index: 100;
