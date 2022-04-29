@@ -8,7 +8,7 @@ function Messages() {
   const { count } = useMsgCount();
 
   function handleClick() {
-    navigate("/panel/messages");
+    navigate("/panel/messages/saved");
   }
 
   return (

@@ -7,7 +7,6 @@ import Courses from "./Pages/Panel/Courses";
 import Colleges from "./Pages/Panel/Management/Colleges";
 import FieldOfStudies from "./Pages/Panel/Management/FieldOfStudies";
 import Management from "./Pages/Panel/Management/Management";
-import Professors from "./Pages/Panel/Management/Professors";
 import Times from "./Pages/Panel/Management/Times";
 import Users from "./Pages/Panel/Management/Users";
 import Inbox from "./Pages/Panel/Messages/Inbox";
@@ -19,11 +18,12 @@ import Reports from "./Pages/Panel/Reports";
 import Schedules from "./Pages/Panel/Schedule/Schedules";
 import Test from "./Pages/Panel/Schedule/Test";
 import Weekly from "./Pages/Panel/Schedule/Weekly";
-import Semester from "./Pages/Panel/Semester";
 import RequireAuth from "./Components/Shared/RequireAuth";
 import HasRole from "./Components/Shared/HasRole";
 import IsAuth from "./Components/Shared/IsAuth";
 import MsgCountProvider from "./Components/Contexts/MsgCountProvider";
+import Semesters from "./Pages/Panel/Management/Semesters";
+import Professors from "./Pages/Panel/Professors";
 
 /* const ROLES = {
   admin: 1,
@@ -53,25 +53,25 @@ function App() {
                 <Route path="courses" element={<Courses />} />
               </Route>
               <Route path="classes" element={<Classes />} />
+              <Route path="professors" element={<Professors />} />
               <Route path="class-schedule" element={<ClassSchedule />} />
               <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="schedules" element={<Schedules />} />
               </Route>
               <Route path="weekly-schedules" element={<Weekly />} />
               <Route path="test-schedules" element={<Test />} />
-              <Route element={<HasRole allowedRoles={[2, 3, 4]} />}>
-                <Route path="semester" element={<Semester />} />
+              <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="management" element={<Management />}>
                   <Route path="users" element={<Users />} />
-                  <Route path="professors" element={<Professors />} />
                   <Route path="field-of-studies" element={<FieldOfStudies />} />
                   <Route path="colleges" element={<Colleges />} />
                   <Route path="times" element={<Times />} />
+                  <Route path="semester" element={<Semesters />} />
                 </Route>
               </Route>
             </Route>
           </Route>
-          <Route path="*" element={<h1>No Page found! 404</h1>} />
+          <Route path="*" element={<h1>صفحه ی مورد نظر پیدا نشد! 404</h1>} />
         </Routes>
       </MsgCountProvider>
     </BrowserRouter>

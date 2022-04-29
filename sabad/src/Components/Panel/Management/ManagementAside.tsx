@@ -12,14 +12,6 @@ function ManagementAside() {
         کاربران
       </NavLink>
       <NavLink
-        to={"/panel/management/professors"}
-        className={({ isActive }) => {
-          return isActive ? "tab" : "un-tab";
-        }}
-      >
-        اساتید
-      </NavLink>
-      <NavLink
         to={"/panel/management/field-of-studies"}
         className={({ isActive }) => {
           return isActive ? "tab" : "un-tab";
@@ -42,6 +34,14 @@ function ManagementAside() {
         }}
       >
         ساعت درسی
+      </NavLink>
+      <NavLink
+        to={"/panel/management/semester"}
+        className={({ isActive }) => {
+          return isActive ? "tab" : "un-tab";
+        }}
+      >
+        نیمسال
       </NavLink>
     </aside>
   );

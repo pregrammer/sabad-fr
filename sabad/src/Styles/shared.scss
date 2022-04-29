@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: vazir;
   src: url(./Fonts/Vazir-Regular.ttf);
@@ -10,18 +9,28 @@ body {
   box-sizing: border-box;
 }
 
+.vazir-font {
+  font-family: vazir;
+}
+
 .Toastify__toast {
   font-family: vazir !important;
   font-size: 13.5px;
 }
 
 .swal2-container h2,
-.swal2-container button{
+.swal2-container button,
+#swal2-html-container {
   font-family: vazir !important;
 }
 
-.swal2-container h2{
+.swal2-container h2 {
   font-size: 22px;
+}
+
+#swal2-html-container {
+  color: red;
+  font-size: 14px;
 }
 
 .bgc-loading-modal {
@@ -54,8 +63,40 @@ body {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.pagiMagi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  ul {
+    li {
+      display: inline-block;
+
+      a {
+        background-color: rgb(222, 217, 217);
+        padding: 7px 12px 7px 12px;
+        margin-right: 5px;
+        border-radius: 50%;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+
+    li.disabled a {
+      cursor: no-drop;
+    }
+
+    li.selected a {
+      color: #fff;
+      background-color: rgb(20, 13, 63);
+    }
+  }
 }
 
 @keyframes spin {

@@ -45,7 +45,6 @@ $untab-text-color: #474747;
       user-select: none;
       box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
     }
-
   }
 
   .content {
@@ -55,6 +54,578 @@ $untab-text-color: #474747;
     padding-top: 94px;
     direction: rtl;
 
-    
+    .users-container,
+    .fos-container,
+    .times-container,
+    .college-container,
+    .semesters-container {
+      > button:first-of-type {
+        padding: 10px 50px;
+        border-radius: 10px;
+        background-color: rgb(0, 255, 21);
+        border: none;
+        font-family: vazir;
+        margin-right: 50%;
+        transform: translateX(50%);
+        cursor: pointer;
+      }
+      > button:first-of-type:hover {
+        color: #fff;
+        background-color: rgb(15, 143, 26);
+      }
+      .close-form {
+        margin-right: 35% !important;
+        color: #fff !important;
+        background-color: red !important;
+      }
+
+      h2:first-of-type {
+        font-family: vazir;
+        margin-right: 20px;
+      }
+
+      table {
+        margin-top: 40px;
+        font-family: vazir;
+        margin-right: 40px;
+        width: 94%;
+        border-collapse: collapse;
+
+        th,
+        td {
+          text-align: center;
+          padding: 8px;
+        }
+
+        td {
+          font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        /* tr:hover {
+          color: #fff;
+          background-color: #444040c3;
+        } */
+
+        th {
+          background-color: #04aa6d;
+          color: white;
+        }
+
+        tbody tr td:last-of-type svg {
+          cursor: pointer;
+        }
+
+        tbody tr td:last-of-type svg:first-of-type {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .fos-container tbody td:first-of-type,
+    .college-container tbody td:first-of-type {
+      position: relative;
+    }
+    .fos-container tbody input,
+    .college-container tbody input {
+      font-family: vazir;
+      border: none;
+      outline: none;
+      background-color: inherit;
+      position: absolute;
+      top: 7px;
+      left: 36%;
+    }
+    .college-container tbody input {
+      left: 31.5%;
+    }
+    .fos-container form,
+    .college-container form {
+      position: absolute;
+      left: 25%;
+      top: 12.3%;
+
+      input {
+        padding: 7px;
+        border: 1px solid rgb(154, 154, 154);
+        border-radius: 10px;
+        font-family: vazir;
+        width: 250px;
+        margin-left: 15px;
+      }
+
+      button {
+        padding: 7px 20px 7px 20px;
+        font-family: vazir;
+        color: #fff;
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .error {
+        font-family: vazir;
+        color: red;
+        font-size: 13px;
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+    }
+
+    .user-submit-content {
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 800px;
+      height: 470px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10vh;
+      direction: rtl;
+      z-index: 11;
+
+      .close {
+        color: #aaa;
+        font-size: 28px;
+        user-select: none;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #000;
+      }
+
+      form {
+        width: 770px;
+        margin-right: 20px;
+
+        label {
+          font-family: vazir;
+          font-size: 14px;
+          margin-top: 15px;
+          margin-left: 10px;
+        }
+
+        h4 {
+          font-family: vazir;
+        }
+
+        .group {
+          display: flex;
+          justify-content: space-around;
+          margin-top: 40px;
+          position: relative;
+
+          #firstName {
+            margin-right: 15px;
+          }
+
+          input,
+          select {
+            width: 250px;
+            padding: 7px;
+            border-radius: 5px;
+            font-family: vazir;
+            border: 1px solid rgb(149, 149, 149);
+          }
+
+          .error {
+            color: red;
+            font-family: vazir;
+            font-size: 12px;
+            position: absolute;
+            top: 42px;
+            right: 80px;
+          }
+          .error-right {
+            color: red;
+            font-family: vazir;
+            font-size: 12px;
+            position: absolute;
+            top: 42px;
+            left: 125px;
+          }
+        }
+
+        .group:nth-child(4) {
+          padding: 0 30px;
+          justify-content: space-between;
+        }
+
+        .group select {
+          width: 265px;
+        }
+
+        .group:nth-child(5) {
+          padding-right: 8px;
+
+          input:nth-of-type(2) {
+            margin-left: -35px;
+          }
+        }
+
+        button {
+          font-family: vazir;
+          padding: 6px 50px;
+          border: none;
+          background-color: rgb(64, 247, 146);
+          border-radius: 10px;
+          margin-top: 30px;
+          margin-right: 78%;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .time-submit-content {
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 800px;
+      min-height: 170px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 13vh;
+      direction: rtl;
+      z-index: 11;
+
+      .close {
+        color: #aaa;
+        font-size: 28px;
+        user-select: none;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #000;
+      }
+
+      form {
+        width: 770px;
+        margin-right: 20px;
+        position: relative;
+
+        > div {
+          display: inline-block;
+        }
+
+        label {
+          font-family: vazir;
+          font-size: 14px;
+          margin-top: 15px;
+          margin-left: 10px;
+        }
+        label:first-of-type {
+          margin-right: 40px;
+        }
+
+        h4 {
+          font-family: vazir;
+          margin-bottom: 30px;
+        }
+
+        input {
+          font-family: vazir;
+          padding: 7px;
+          border-radius: 10px;
+          border: 1px solid rgb(119, 119, 119);
+        }
+        input:first-of-type {
+          margin-left: 30px;
+        }
+
+        button {
+          font-family: vazir;
+          padding: 7px 50px;
+          border: none;
+          background-color: rgb(64, 247, 146);
+          border-radius: 10px;
+          cursor: pointer;
+          position: absolute;
+          margin-right: 50px;
+        }
+      }
+
+      .error {
+        color: red;
+        display: inline-block;
+        font-family: vazir;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-right: 125px;
+      }
+      .error-left {
+        color: red;
+        display: inline-block;
+        font-family: vazir;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-right: 90px;
+      }
+    }
+
+    .semester-submit-content {
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 70%;
+      position: absolute;
+      direction: rtl;
+      z-index: 11;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .close {
+        color: #aaa;
+        font-size: 28px;
+        user-select: none;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #000;
+      }
+
+      .semesterDate {
+        position: absolute;
+        top: 19.1%;
+        right: 15%;
+      }
+      .unitDate {
+        position: absolute;
+        top: 19.1%;
+        right: 45%;
+      }
+      .editUnitDate {
+        position: absolute;
+        top: 19.1%;
+        right: 75%;
+      }
+      .first {
+        position: absolute;
+        top: 33.5%;
+        right: 15%;
+      }
+      .second {
+        position: absolute;
+        top: 33.5%;
+        right: 47%;
+      }
+      .third {
+        position: absolute;
+        top: 33.5%;
+        right: 75%;
+      }
+      .fourth {
+        position: absolute;
+        bottom: 58%;
+        right: 15%;
+      }
+      .fifth {
+        position: absolute;
+        bottom: 58%;
+        right: 47%;
+      }
+      .sixth {
+        position: absolute;
+        bottom: 58%;
+        right: 75%;
+      }
+      .seventh {
+        position: absolute;
+        bottom: 52%;
+        right: 15%;
+      }
+      .eighth {
+        position: absolute;
+        bottom: 52%;
+        right: 47%;
+      }
+      .ninth {
+        position: absolute;
+        bottom: 52%;
+        right: 75%;
+      }
+      .tenth {
+        position: absolute;
+        bottom: 46%;
+        right: 15%;
+      }
+      .eleventh {
+        position: absolute;
+        bottom: 46%;
+        right: 47%;
+      }
+      .twelfth {
+        position: absolute;
+        bottom: 46%;
+        right: 75%;
+      }
+      .thirteenth {
+        position: absolute;
+        bottom: 40%;
+        right: 15%;
+      }
+      .fourteenth {
+        position: absolute;
+        bottom: 40%;
+        right: 47%;
+      }
+
+      .semDatePickers input {
+        font-family: vazir;
+        border: 1px solid rgb(119, 119, 119);
+        border-radius: 10px;
+        padding: 6px;
+      }
+
+      form {
+        //width: 770px;
+        margin-right: 20px;
+        position: relative;
+
+        .down{
+          display: flex;
+          flex-direction: column;
+          margin-top: 8%;
+          margin-bottom: 3%;
+
+          > input[type=text]{
+            width: 70%;
+            padding: 10px;
+            font-family: vazir;
+            border: 1px solid rgb(115, 115, 115);
+            border-radius: 10px;
+            margin-bottom: 3%;
+          }
+          > textarea{
+            resize: none;
+            border: 1px solid rgb(115, 115, 115);
+            border-radius: 10px;
+            width: 92%;
+            height: 200px;
+            padding: 10px;
+            font-family: vazir;
+          }
+        }
+
+        label {
+          font-family: vazir;
+          font-size: 14px;
+          margin-top: 15px;
+          margin-left: 10px;
+        }
+        label:first-of-type {
+          margin-right: 40px;
+        }
+
+        h4 {
+          font-family: vazir;
+          margin-bottom: 30px;
+          color: #fff;
+          background-color: #176aa5;
+          padding: 15px 25px;
+          display: inline-block;
+          border-radius: 50%;
+          margin-right: 50%;
+          transform: translateX(50%);
+        }
+
+        h5 {
+          font-family: vazir;
+          margin-top: 80px;
+          margin-bottom: 50px;
+        }
+
+        .lbls {
+          margin-bottom: 50px;
+
+          :nth-child(2),
+          :nth-child(3) {
+            margin-right: 25%;
+          }
+        }
+
+        .topLbls {
+          :nth-child(2),
+          :nth-child(3) {
+            margin-right: 20%;
+          }
+        }
+
+        .firstLine {
+          display: flex;
+          > :nth-child(1) {
+            display: flex;
+          }
+          > :nth-child(2) {
+            display: flex;
+            margin-right: 17%;
+          }
+        }
+
+        .group {
+          //border: 1px solid #000;
+          margin-bottom: 50px;
+
+          input[type="number"] {
+            font-family: vazir;
+            padding: 7px;
+            border-radius: 10px;
+            border: 1px solid rgb(119, 119, 119);
+          }
+
+          input:first-of-type {
+            margin-left: 30px;
+          }
+
+          select {
+            font-family: vazir;
+            padding: 7px;
+            width: 100px;
+            border-radius: 10px;
+            border: 1px solid rgb(119, 119, 119);
+          }
+        }
+
+        button {
+          font-family: vazir;
+          padding: 7px 50px;
+          border: none;
+          background-color: rgb(64, 247, 146);
+          border-radius: 10px;
+          cursor: pointer;
+          margin-right: 80%;
+          margin-bottom: 3%;
+          //margin-top: 5%;
+        }
+      }
+
+      .error {
+        color: red;
+        display: inline-block;
+        font-family: vazir;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-right: 125px;
+      }
+      .error-left {
+        color: red;
+        display: inline-block;
+        font-family: vazir;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-right: 90px;
+      }
+      .semError {
+        color: red;
+        font-family: vazir;
+        font-size: 13px;
+        position: absolute;
+      }
+    }
   }
 }

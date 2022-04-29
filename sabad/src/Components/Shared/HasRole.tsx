@@ -7,7 +7,7 @@ const HasRole = ({ allowedRoles }: any) => {
   return allowedRoles.includes(auth.role) ? (
     <Outlet />
   ) : (
-    <h1>you're not allowed</h1>
+    <h1>دسترسی غیر مجاز!</h1>
   );
 };
 
