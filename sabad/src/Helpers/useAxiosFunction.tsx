@@ -33,7 +33,7 @@ const useAxiosFunction = () => {
       setData(res.data);
     } catch (error: any) {
       if (error.response) {
-        if (error.response.status === 401 || error.response.status === 403) {
+        if (error.response.status === 401) {
           if (Object.keys(auth).length !== 0) {
             setAuth({});
             navigate("/", { replace: true });

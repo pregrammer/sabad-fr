@@ -29,7 +29,7 @@ const IsAuth = () => {
   if (isLoading) {
     return <LoadingModal />;
   } else if (isSigned) {
-    return <Navigate to="/panel" />;
+    return <Navigate to="/panel/reports" />;
   } else {
     return <Login />;
   }

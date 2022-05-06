@@ -1,4 +1,4 @@
-.professors {
+.classes {
   padding: 50px;
   direction: rtl;
 
@@ -75,14 +75,23 @@
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-    /* tr:hover {
-      color: #fff;
-      background-color: #444040c3;
-    } */
+    tr:hover {
+      background-color: rgb(215, 215, 215);
+    }
 
     th {
       background-color: #04aa6d;
       color: white;
+    }
+
+    tbody tr td:last-of-type a {
+      text-decoration: none;
+      margin-left: 10px;
+      color: #fff;
+      background-color: rgb(49, 73, 128);
+      border-radius: 10px;
+      font-size: 12px;
+      padding: 0 5px;
     }
 
     tbody tr td:last-of-type svg {
@@ -95,12 +104,12 @@
   }
 }
 
-.professor-submit-content {
+.class-submit-content {
   background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
   width: 800px;
-  height: 440px;
+  height: 340px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -160,36 +169,10 @@
         top: 42px;
         right: 80px;
       }
-      .error-right {
-        color: red;
-        font-family: vazir;
-        font-size: 12px;
-        position: absolute;
-        top: 42px;
-        left: 125px;
-      }
-    }
-
-    .group:nth-child(4) {
-      padding: 0 30px;
-      justify-content: space-between;
-    }
-
-    .group:nth-child(5) {
-      display: inline-block;
-      margin-right: 20px;
     }
 
     .group select {
       width: 265px;
-    }
-
-    .group:nth-child(5) {
-      padding-right: 8px;
-
-      input:nth-of-type(2) {
-        margin-left: -35px;
-      }
     }
 
     button {
@@ -200,8 +183,110 @@
       border-radius: 10px;
       margin-right: 78%;
       cursor: pointer;
-      position: relative;
-      top: -35px;
+      margin-top: 45px;
     }
   }
+}
+
+.class-schedule {
+  padding: 50px;
+  direction: rtl;
+
+  > h3 {
+    font-family: vazir;
+    margin-top: 40px;
+  }
+
+  table {
+    margin-top: 30px;
+    font-family: vazir;
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+      border: 1px solid rgb(167, 167, 167);
+      width: 100px;
+    }
+
+    td {
+      font-size: 14px;
+      height: 50px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    th {
+      background-color: #0494aa;
+      color: white;
+    }
+  }
+
+  .schedule {
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 20px;
+    font-family: vazir;
+    user-select: none;
+    position: relative;
+
+    .group {
+      display: flex;
+      justify-content: space-between;
+
+      div span:nth-child(2) {
+        font-size: 13px;
+        margin-right: 7px;
+      }
+    }
+
+    .group:not(.top .group:first-of-type) {
+      margin-bottom: 15px;
+    }
+    .down .group:first-of-type {
+      margin-top: 15px;
+    }
+
+    //
+    .down .group:first-of-type div:nth-child(2) span:nth-child(2) {
+      right: 29vw;
+    }
+    //
+
+    .down .group:last-of-type {
+      div:nth-child(4) {
+        span:nth-child(2) svg:not(:last-of-type) {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  /*     table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    table td, table th {
+        width: 100px;
+        text-align: center;
+    }
+    table td {
+      height: 40px;
+    }
+    table {
+      direction: rtl;
+    }
+    thead tr{
+        background-color: rgb(250, 250, 11);
+    }
+    .not-stable{
+      background-color: rgb(252, 215, 178);
+    } */
 }

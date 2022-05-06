@@ -48,7 +48,8 @@ function Colleges() {
           </tbody>
         </table>
       </div>
-      {Math.ceil(colleges.totallItems / 20) !== 1 && (
+      {Math.ceil(colleges.totallItems / 20) !== 1 &&
+        Math.ceil(colleges.totallItems / 20) !== 0 && (
         <div className="pagiMagi">
           <ReactPaginate
             breakLabel="..."

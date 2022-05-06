@@ -38,7 +38,8 @@ function Inbox() {
             <Message key={message.id} message={message} isInbox={true} setUpdate={setUpdate} />
           ))}
       </div>
-      {Math.ceil(messages.totallItems / 20) !== 1 && (
+      {Math.ceil(messages.totallItems / 20) !== 1 &&
+        Math.ceil(messages.totallItems / 20) !== 0 && (
         <div className="pagiMagi">
           <ReactPaginate
             breakLabel="..."

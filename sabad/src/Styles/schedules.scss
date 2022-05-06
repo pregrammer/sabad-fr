@@ -1,0 +1,433 @@
+.schedules {
+  padding: 50px;
+  direction: rtl;
+
+  > button:first-of-type {
+    position: absolute;
+    top: 88px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: vazir;
+    padding: 10px 20px;
+    background-color: rgb(23, 232, 62);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+  > button:first-of-type:hover {
+    background-color: rgb(23, 136, 44);
+    color: #fff;
+  }
+
+  > h3 {
+    font-family: vazir;
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+
+  .schedule {
+    border: 1px solid red;
+    background-color: rgb(251, 230, 230);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 20px;
+    font-family: vazir;
+    user-select: none;
+    position: relative;
+
+    .group {
+      display: flex;
+      justify-content: space-between;
+
+      /*
+      div:nth-child(2) {
+        span:nth-child(1) {
+          position: absolute;
+          right: 20vw;
+        }
+        span:nth-child(2) {
+          position: absolute;
+          right: 28vw;
+          margin-top: 4px;
+        }
+      }
+      div:nth-child(3):not(.down .group:last-of-type div:nth-child(3)) {
+        span:nth-child(1) {
+          position: absolute;
+          right: 39vw;
+        }
+        span:nth-child(2) {
+          position: absolute;
+          right: 46vw;
+          margin-top: 4px;
+        }
+      }
+      div:nth-child(4):not(.down .group:last-of-type div:nth-child(4)) {
+        span:nth-child(1) {
+          position: absolute;
+          right: 57vw;
+        }
+        span:nth-child(2) {
+          position: absolute;
+          right: 64vw;
+          margin-top: 4px;
+        }
+      }
+      div:nth-child(5) {
+        span:nth-child(1) {
+          position: absolute;
+          right: 77vw;
+        }
+        span:nth-child(2) {
+          position: absolute;
+          right: 84vw;
+          margin-top: 4px;
+        }
+      }
+      */
+
+      div span:nth-child(2) {
+        font-size: 13px;
+        margin-right: 7px;
+      }
+    }
+    /*
+    .down .group:last-of-type div:nth-child(3){
+      span:nth-child(1) {
+        position: absolute;
+        right: 39vw;
+      }
+      span:nth-child(2) {
+        position: absolute;
+        right: 47vw;
+        margin-top: 4px;
+      }
+    }
+    .down .group:last-of-type div:nth-child(4){
+      span:nth-child(1) {
+        position: absolute;
+        right: 77vw;
+      }
+      span:nth-child(2) {
+        position: absolute;
+        right: 84vw;
+        margin-top: 4px;
+      }
+    }
+    */
+
+    .group:not(.top .group:first-of-type) {
+      margin-bottom: 15px;
+    }
+    .down .group:first-of-type {
+      margin-top: 15px;
+    }
+
+    //
+    .down .group:first-of-type div:nth-child(2) span:nth-child(2) {
+      right: 29vw;
+    }
+    //
+
+    .down .group:last-of-type {
+      div:nth-child(4) {
+        span:nth-child(2) svg:not(:last-of-type) {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  .schedule:hover {
+    box-shadow: 0 0 8px 4px rgba(86, 86, 86, 0.2);
+  }
+}
+
+.schedule-submit-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 650px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5vh;
+  direction: rtl;
+  z-index: 11;
+
+  .close {
+    color: #aaa;
+    font-size: 28px;
+    user-select: none;
+    cursor: pointer;
+  }
+  .close:hover {
+    color: #000;
+  }
+
+  form {
+    margin-right: 20px;
+
+    label {
+      font-family: vazir;
+      font-size: 14px;
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+
+    h4 {
+      font-family: vazir;
+    }
+
+    .group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      position: relative;
+
+      input,
+      select {
+        width: 250px;
+        padding: 7px;
+        border-radius: 5px;
+        font-family: vazir;
+        border: 1px solid rgb(149, 149, 149);
+      }
+    }
+
+    .group:nth-child(2) div:nth-child(1) select {
+      margin-right: 63px;
+    }
+    .group:nth-child(3) div:nth-child(1) select,
+    .group:nth-child(4) div:nth-child(1) select {
+      margin-right: 22px;
+    }
+    .group:nth-child(6) div:nth-child(1) select {
+      margin-right: 39px;
+    }
+    .group:nth-child(7) div:nth-child(1) select {
+      margin-right: 45px;
+    }
+
+    .group:nth-child(2) div:nth-child(2) select {
+      margin-right: 48px;
+    }
+    .group:nth-child(3) div:nth-child(2) select {
+      margin-right: 38px;
+    }
+    .group:nth-child(4) div:nth-child(2) select {
+      margin-right: 38px;
+    }
+    .group:nth-child(6) div:nth-child(2) select {
+      margin-right: 16px;
+    }
+
+    .group select {
+      width: 265px;
+    }
+
+    button {
+      font-family: vazir;
+      padding: 9px 90px;
+      border: none;
+      background-color: rgb(64, 247, 146);
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 45px;
+      margin-right: 82%;
+    }
+  }
+}
+
+.weekly-schedules {
+  padding: 50px;
+  direction: rtl;
+
+  > button:first-of-type {
+    position: absolute;
+    left: 50px;
+    top: 83px;
+    font-family: vazir;
+    padding: 10px 20px;
+    background-color: rgb(211, 179, 255);
+    border: 1px solid rgb(106, 24, 142);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+  > button:first-of-type:hover {
+    background-color: rgb(106, 24, 142);
+    color: #fff;
+  }
+
+  .filter-side {
+    margin-top: 40px;
+
+    label,
+    select,
+    button {
+      font-family: vazir;
+    }
+
+    select {
+      margin-right: 10px;
+      margin-left: 30px;
+      border-radius: 10px;
+      padding: 5px;
+      border: 1px solid rgb(181, 181, 181);
+    }
+
+    button {
+      padding: 7px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+    button:hover {
+      background-color: rgb(213, 213, 213);
+    }
+  }
+
+  > h3 {
+    font-family: vazir;
+    margin-top: 45px;
+  }
+
+  table {
+    margin-top: 30px;
+    font-family: vazir;
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+      border: 1px solid rgb(167, 167, 167);
+      width: 100px;
+    }
+
+    td {
+      font-size: 14px;
+      height: 50px;
+    }
+
+    th {
+      background-color: #3a7f88;
+      color: white;
+    }
+  }
+}
+
+.test-schedules {
+  padding: 50px;
+  direction: rtl;
+
+  > button:first-of-type {
+    position: absolute;
+    left: 50px;
+    top: 88px;
+    font-family: vazir;
+    padding: 10px 20px;
+    background-color: rgb(211, 179, 255);
+    border: 1px solid rgb(106, 24, 142);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+  > button:first-of-type:hover {
+    background-color: rgb(106, 24, 142);
+    color: #fff;
+  }
+
+  .filter-side {
+    margin-top: 40px;
+
+    label,
+    select,
+    button {
+      font-family: vazir;
+    }
+
+    select {
+      margin-right: 10px;
+      margin-left: 30px;
+      border-radius: 10px;
+      padding: 5px;
+      border: 1px solid rgb(181, 181, 181);
+    }
+
+    button {
+      padding: 7px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+    button:hover {
+      background-color: rgb(213, 213, 213);
+    }
+  }
+
+  > h3 {
+    font-family: vazir;
+    margin-top: 45px;
+  }
+
+  table {
+    margin-top: 30px;
+    font-family: vazir;
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+      border: 1px solid rgb(167, 167, 167);
+      width: 50px;
+    }
+
+    td {
+      font-size: 14px;
+      height: 40px;
+    }
+
+    th {
+      background-color: #429061;
+      color: white;
+    }
+  }
+}
+
+/*
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table td, table th {
+          width: 100px;
+          text-align: center;
+      }
+      table td {
+        height: 40px;
+      }
+      table {
+        direction: rtl;
+      }
+      thead tr{
+          background-color: rgb(90, 195, 251);
+      }
+*/

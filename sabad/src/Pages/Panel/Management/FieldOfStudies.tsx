@@ -52,7 +52,8 @@ function FieldOfStudies() {
           </tbody>
         </table>
       </div>
-      {Math.ceil(field_of_studies.totallItems / 20) !== 1 && (
+      {Math.ceil(field_of_studies.totallItems / 20) !== 1 &&
+        Math.ceil(field_of_studies.totallItems / 20) !== 0 && (
         <div className="pagiMagi">
           <ReactPaginate
             breakLabel="..."

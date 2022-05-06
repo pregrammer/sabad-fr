@@ -54,12 +54,12 @@ function App() {
               </Route>
               <Route path="classes" element={<Classes />} />
               <Route path="professors" element={<Professors />} />
-              <Route path="class-schedule" element={<ClassSchedule />} />
+              <Route path="class-schedule/:classId" element={<ClassSchedule />} />
               <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="schedules" element={<Schedules />} />
               </Route>
-              <Route path="weekly-schedules" element={<Weekly />} />
-              <Route path="test-schedules" element={<Test />} />
+              <Route path="weekly-schedules/:semId" element={<Weekly />} />
+              <Route path="test-schedules/:semId" element={<Test />} />
               <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="management" element={<Management />}>
                   <Route path="users" element={<Users />} />
