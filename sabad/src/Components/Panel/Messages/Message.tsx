@@ -19,7 +19,7 @@ function Message({ message, isInbox, setUpdate }: any) {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "بله",
-      cancelButtonText: "خیر"
+      cancelButtonText: "خیر",
     }).then((result) => {
       if (result.isConfirmed) {
         handleDelete();
@@ -66,12 +66,12 @@ function Message({ message, isInbox, setUpdate }: any) {
               : message.title}
           </span>
           <span className="date">
-            {message.created_at.split("T").reverse().join(" - ")}
+            {message.created_at.split("T").reverse().join(" _ ")}
           </span>
           <span className="extra">
-            {message.isSeen !== undefined && !isInbox && (
-              <span className="is-seen">دیده شده</span>
-            )}
+            {message.isSeen !== undefined &&
+              message.isSeen !== 0 &&
+              !isInbox && <span className="is-seen">دیده شده</span>}
             <FontAwesomeIcon icon={faTrash} onClick={deleteClick} />
           </span>
         </div>

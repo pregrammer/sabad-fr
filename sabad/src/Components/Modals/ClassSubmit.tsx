@@ -25,7 +25,7 @@ function ClassSubmit({ setEditOpen, editData, updateRows }: any) {
     },
     validationSchema: Yup.object({
       title: Yup.string()
-        .required("وارد کردن عنوان دانشکده لازم است")
+        .required("وارد کردن عنوان کلاس لازم است")
         .max(50, "حداکثر تعداد کاراکتر 50 می باشد"),
     }),
     onSubmit: (values) => {

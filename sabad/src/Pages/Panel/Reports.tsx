@@ -1,4 +1,4 @@
-import "../../Styles/reports.scss"
+import "../../Styles/reports.scss";
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import useAxiosFunction from "../../Helpers/useAxiosFunction";
@@ -37,11 +37,17 @@ function Reports() {
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              semesters.result?.length &&
+            {!loading && semesters.result?.length ? (
               semesters.result.map((semester: any) => (
                 <ReportRow key={semester.id} semester={semester} />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6} className="has-no-row">
+                  نیمسالی برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

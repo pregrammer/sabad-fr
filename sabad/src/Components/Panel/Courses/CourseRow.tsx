@@ -6,10 +6,12 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import LoadingModal from "../../Modals/LoadingModal";
 import CourseSubmit from "../../Modals/CourseSubmit";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 function CourseRow({ course, setUpdate }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, loading, axiosFetch]: any = useAxiosFunction();
+  const { auth } = useAuth();
 
   function handleUpdateClick() {
     setIsOpen((prev: boolean) => !prev);
@@ -70,10 +72,12 @@ function CourseRow({ course, setUpdate }: any) {
         </td>
         <td>{course.pre_name ? course.pre_name : "ندارد"}</td>
         <td>{course.need_name ? course.need_name : "ندارد"}</td>
-        <td>
-          <FontAwesomeIcon icon={faEdit} onClick={handleUpdateClick} />
-          <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
-        </td>
+        {auth.role === 2 && (
+          <td>
+            <FontAwesomeIcon icon={faEdit} onClick={handleUpdateClick} />
+            <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
+          </td>
+        )}
       </tr>
       {isOpen && (
         <CourseSubmit

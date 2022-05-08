@@ -18,8 +18,8 @@ function Professors() {
   const { auth } = useAuth();
   const [filters, setFilters] = useState({
     fos: auth.field_of_study_id ? auth.field_of_study_id : "all",
-    kind: "1",
-    grade: "1",
+    kind: "all",
+    grade: "all",
   });
 
   useEffect(() => {
@@ -73,7 +73,9 @@ function Professors() {
         <ProfessorSubmit setEditOpen={setEditOpen} updateRows={setUpdate} />
       )}
       <div className="professors">
-        <button onClick={handleProfSubmit}>+ افزودن استاد</button>
+        {auth.role === 1 && (
+          <button onClick={handleProfSubmit}>+ افزودن استاد</button>
+        )}
         <div className="filter-side">
           <label htmlFor="">رشته:</label>
           <select name="fos" onChange={handleFilterChange} value={filters.fos}>
@@ -87,13 +89,21 @@ function Professors() {
               ))}
           </select>
           <label htmlFor="">نوع:</label>
-          <select name="kind" onChange={handleFilterChange}>
+          <select
+            name="kind"
+            onChange={handleFilterChange}
+            value={filters.kind}
+          >
             <option value="all">همه</option>
             <option value="0">هیات علمی</option>
             <option value="1">مدعو</option>
           </select>
           <label htmlFor="">آخرین مدرک:</label>
-          <select name="grade" onChange={handleFilterChange}>
+          <select
+            name="grade"
+            onChange={handleFilterChange}
+            value={filters.grade}
+          >
             <option value="all">همه</option>
             <option value="1">کارشناسی</option>
             <option value="2">کارشناسی ارشد</option>
@@ -114,19 +124,25 @@ function Professors() {
               <th>نوع</th>
               <th>مدرک</th>
               <th>تلفن</th>
-              <th>تغییرات</th>
+              {auth.role === 1 && <th>تغییرات</th>}
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              professors.result?.length &&
+            {!loading && professors.result?.length ? (
               professors.result.map((professor: any) => (
                 <ProfessorRow
                   key={professor.id}
                   professor={professor}
                   setUpdate={setUpdate}
                 />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={7} className="has-no-row">
+                  استادی برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

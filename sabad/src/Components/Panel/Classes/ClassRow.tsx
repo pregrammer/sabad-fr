@@ -7,10 +7,12 @@ import useAxiosFunction from "../../../Helpers/useAxiosFunction";
 import ClassSubmit from "../../Modals/ClassSubmit";
 import LoadingModal from "../../Modals/LoadingModal";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 function ClassRow({ kelas, setUpdate }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, loading, axiosFetch]: any = useAxiosFunction();
+  const { auth } = useAuth();
 
   function handleUpdateClick() {
     setIsOpen((prev: boolean) => !prev);
@@ -59,12 +61,18 @@ function ClassRow({ kelas, setUpdate }: any) {
       <tr>
         <td>{kelas.title}</td>
         <td>{kelas.hasProjector ? "دارد" : "ندارد"}</td>
-        <td>{kelas.capacity} نفر</td>
+        <td>
+          <span>{kelas.capacity}</span> نفر
+        </td>
         <td>{kelas.college_name}</td>
         <td>
           <Link to={`/panel/class-schedule/${kelas.id}`}>برنامه ی کلاس</Link>
-          <FontAwesomeIcon icon={faEdit} onClick={handleUpdateClick} />
-          <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
+          {auth.role === 1 && (
+            <FontAwesomeIcon icon={faEdit} onClick={handleUpdateClick} />
+          )}
+          {auth.role === 1 && (
+            <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
+          )}
         </td>
       </tr>
       {isOpen && (

@@ -40,36 +40,42 @@ function FieldOfStudies() {
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              field_of_studies.result?.length &&
+            {!loading && field_of_studies.result?.length ? (
               field_of_studies.result.map((field_of_study: any) => (
                 <FosRow
                   key={field_of_study.id}
                   field_of_study={field_of_study}
                   setUpdate={setUpdate}
                 />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={2} className="has-no-row">
+                  رشته ای برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
       {Math.ceil(field_of_studies.totallItems / 20) !== 1 &&
         Math.ceil(field_of_studies.totallItems / 20) !== 0 && (
-        <div className="pagiMagi">
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={4}
-            pageCount={
-              field_of_studies.totallItems
-                ? Math.ceil(field_of_studies.totallItems / 20)
-                : 0
-            }
-            previousLabel="<"
-            renderOnZeroPageCount={() => null}
-          />
-        </div>
-      )}
+          <div className="pagiMagi">
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={4}
+              pageCount={
+                field_of_studies.totallItems
+                  ? Math.ceil(field_of_studies.totallItems / 20)
+                  : 0
+              }
+              previousLabel="<"
+              renderOnZeroPageCount={() => null}
+            />
+          </div>
+        )}
       {loading && <LoadingModal />}
     </>
   );

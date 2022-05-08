@@ -5,6 +5,7 @@ import ReactPaginate from "react-paginate";
 import ScheduleSubmit from "../../../Components/Modals/ScheduleSubmit";
 import LoadingModal from "../../../Components/Modals/LoadingModal";
 import useAxiosFunction from "../../../Helpers/useAxiosFunction";
+import { useAuth } from "../../../Components/Contexts/AuthProvider";
 
 function Schedules() {
   const [editOpen, setEditOpen] = useState(false);
@@ -12,6 +13,7 @@ function Schedules() {
   const [schedules, loading, axiosFetch]: any = useAxiosFunction();
   const [pageNumber, setPageNumber] = useState(1);
   const [update, setUpdate] = useState(false);
+  const { auth } = useAuth();
 
   useEffect(() => {
     axiosFetch2({
@@ -40,12 +42,15 @@ function Schedules() {
         <ScheduleSubmit setEditOpen={setEditOpen} updateRows={setUpdate} />
       )}
       <div className="schedules">
-        <button onClick={() => setEditOpen((prev: boolean) => !prev)}>
-          + افزودن درس به برنامه
-        </button>
-        <h3>لیست دروس برنامه ریزی شده</h3>
-        {!loading &&
-          schedules.result?.length &&
+        {auth.role === 2 && (
+          <button onClick={() => setEditOpen((prev: boolean) => !prev)}>
+            + افزودن درس به برنامه
+          </button>
+        )}
+        <h3 style={auth.role === 3 ? { marginTop: "50px" } : {}}>
+          لیست دروس برنامه ریزی شده
+        </h3>
+        {!loading && schedules.result?.length ? (
           schedules.result.map((schedule: any) => (
             <ScheduleRow
               key={schedule.id}
@@ -53,7 +58,12 @@ function Schedules() {
               setUpdate={setUpdate}
               testDates={testDates}
             />
-          ))}
+          ))
+        ) : (
+          <div className="has-no-content">
+            درس برنامه ریزی شده ای برای نمایش وجود ندارد
+          </div>
+        )}
       </div>
       {Math.ceil(schedules.totallItems / 20) !== 1 &&
         Math.ceil(schedules.totallItems / 20) !== 0 && (

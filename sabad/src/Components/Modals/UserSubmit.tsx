@@ -38,12 +38,12 @@ function UserSubmit({ setIsOpen, editData, updateRows }: any) {
       email: Yup.string()
         .email("آدرس ایمیل نامعتبر است")
         .required("وارد کردن ایمیل الزامی است")
-        .max(150, "حداکثر تعداد کاراکتر 150 می باشد"),
+        .max(100, "حداکثر تعداد کاراکتر 100 می باشد"),
       phoneNumber: Yup.string()
         .required("وارد کردن شماره تلفن الزامی است")
         .max(18, "حداکثر تعداد کاراکتر 18 می باشد"),
       password: Yup.string()
-        .max(200, "حداکثر تعداد کاراکتر 200 می باشد")
+        .max(150, "حداکثر تعداد کاراکتر 150 می باشد")
         .when("isEditDate", {
           is: (isEditDate: any) => (isEditDate ? false : true),
           then: Yup.string().required("وارد کردن رمز عبور الزامی است"),

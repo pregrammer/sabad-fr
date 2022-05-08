@@ -214,25 +214,25 @@ function Test() {
               }}
             >
               <div>
-                <span>نام درس:</span>
+                <b>نام درس:</b>
                 <span>{schedule.course_name}</span>
               </div>
               <div>
-                <span>کد درس:</span>
+                <b>کد درس:</b>
                 <span>{schedule.course_code}</span>
               </div>
               <div>
-                <span>نام استاد:</span>
+                <b>نام استاد:</b>
                 <span>
                   {schedule.professor_firstName} {schedule.professor_lastName}
                 </span>
               </div>
               <div>
-                <span>گروه درسی:</span>
+                <b>گروه درسی:</b>
                 <span>{schedule.courseGroup}</span>
               </div>
               <div>
-                <span>نیمسال:</span>
+                <b>نیمسال:</b>
                 <span>
                   {schedule.yearPart === 1
                     ? "اول"
@@ -253,15 +253,15 @@ function Test() {
               }}
             >
               <div>
-                <span>حداقل ظرفیت کلاس:</span>
+                <b>حداقل ظرفیت کلاس:</b>
                 <span>{schedule.minCapacity} نفر</span>
               </div>
               <div>
-                <span>حداکثر ظرفیت کلاس:</span>
+                <b>حداکثر ظرفیت کلاس:</b>
                 <span>{schedule.maxCapacity} نفر</span>
               </div>
               <div>
-                <span>روز امتحان:</span>
+                <b>روز امتحان:</b>
                 {schedule.testDayName === "ندارد" ? (
                   <span>بدون امتحان</span>
                 ) : (
@@ -272,7 +272,7 @@ function Test() {
                 )}
               </div>
               <div>
-                <span>نوبت امتحان:</span>
+                <b>نوبت امتحان:</b>
                 <span>
                   {schedule.testDayPart === 1
                     ? "اول"
@@ -284,7 +284,7 @@ function Test() {
                 </span>
               </div>
               <div>
-                <span>رشته:</span>
+                <b>رشته:</b>
                 <span>{schedule.fos_name}</span>
               </div>
             </div>
@@ -297,7 +297,7 @@ function Test() {
               }}
             >
               <div>
-                <span>زمان کلاس اول:</span>
+                <b>زمان کلاس اول:</b>
                 <span>
                   {schedule.time1_start} تا {schedule.time1_end} (
                   {schedule.weekKindClass1 === 1
@@ -309,11 +309,11 @@ function Test() {
                 </span>
               </div>
               <div>
-                <span>عنوان کلاس اول:</span>
+                <b>عنوان کلاس اول:</b>
                 <span>{schedule.class1_title}</span>
               </div>
               <div>
-                <span>زمان کلاس دوم:</span>
+                <b>زمان کلاس دوم:</b>
                 <span>
                   {schedule.time2_start
                     ? `${schedule.time2_start} تا ${schedule.time2_end} (
@@ -329,13 +329,13 @@ function Test() {
                 </span>
               </div>
               <div>
-                <span>عنوان کلاس دوم:</span>
+                <b>عنوان کلاس دوم:</b>
                 <span>
                   {schedule.class2_title ? schedule.class2_title : "ندارد"}
                 </span>
               </div>
               <div>
-                <span>رشته ی میزبان:</span>
+                <b>رشته ی میزبان:</b>
                 <span>
                   {schedule.host_fos_name ? schedule.host_fos_name : "ندارد"}
                 </span>
@@ -346,11 +346,11 @@ function Test() {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <div>
-                <span>روز کلاس اول:</span>
+                <b>روز کلاس اول:</b>
                 <span>{weekDays[schedule.weekDay1 - 1]}</span>
               </div>
               <div>
-                <span>روز کلاس دوم:</span>
+                <b>روز کلاس دوم:</b>
                 <span>
                   {schedule.weekDay2
                     ? weekDays[schedule.weekDay2 - 1]
@@ -358,7 +358,7 @@ function Test() {
                 </span>
               </div>
               <div>
-                <span>آخرین تغییر توسط:</span>
+                <b>آخرین تغییر توسط:</b>
                 <span>
                   {schedule.submitter_firstName} {schedule.submitter_lastName}
                 </span>
@@ -540,7 +540,9 @@ function Test() {
   return (
     <>
       <div className="test-schedules">
-        <button onClick={handleEmailClick}>ایمیل برنامه به استاد</button>
+        {(auth.role === 2 || auth.role === 3) && (
+          <button onClick={handleEmailClick}>ایمیل برنامه به استاد</button>
+        )}
         <div className="filter-side">
           <label htmlFor="">رشته:</label>
           <select

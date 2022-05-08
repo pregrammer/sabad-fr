@@ -221,25 +221,25 @@ function Weekly() {
               }}
             >
               <div>
-                <span>نام درس:</span>
+                <b>نام درس:</b>
                 <span>{schedule.course_name}</span>
               </div>
               <div>
-                <span>کد درس:</span>
+                <b>کد درس:</b>
                 <span>{schedule.course_code}</span>
               </div>
               <div>
-                <span>نام استاد:</span>
+                <b>نام استاد:</b>
                 <span>
                   {schedule.professor_firstName} {schedule.professor_lastName}
                 </span>
               </div>
               <div>
-                <span>گروه درسی:</span>
+                <b>گروه درسی:</b>
                 <span>{schedule.courseGroup}</span>
               </div>
               <div>
-                <span>نیمسال:</span>
+                <b>نیمسال:</b>
                 <span>
                   {schedule.yearPart === 1
                     ? "اول"
@@ -260,15 +260,15 @@ function Weekly() {
               }}
             >
               <div>
-                <span>حداقل ظرفیت کلاس:</span>
+                <b>حداقل ظرفیت کلاس:</b>
                 <span>{schedule.minCapacity} نفر</span>
               </div>
               <div>
-                <span>حداکثر ظرفیت کلاس:</span>
+                <b>حداکثر ظرفیت کلاس:</b>
                 <span>{schedule.maxCapacity} نفر</span>
               </div>
               <div>
-                <span>روز امتحان:</span>
+                <b>روز امتحان:</b>
                 {schedule.testDayName === "ندارد" ? (
                   <span>بدون امتحان</span>
                 ) : (
@@ -279,7 +279,7 @@ function Weekly() {
                 )}
               </div>
               <div>
-                <span>نوبت امتحان:</span>
+                <b>نوبت امتحان:</b>
                 <span>
                   {schedule.testDayPart === 1
                     ? "اول"
@@ -291,7 +291,7 @@ function Weekly() {
                 </span>
               </div>
               <div>
-                <span>رشته:</span>
+                <b>رشته:</b>
                 <span>{schedule.fos_name}</span>
               </div>
             </div>
@@ -304,7 +304,7 @@ function Weekly() {
               }}
             >
               <div>
-                <span>زمان کلاس اول:</span>
+                <b>زمان کلاس اول:</b>
                 <span>
                   {schedule.time1_start} تا {schedule.time1_end} (
                   {schedule.weekKindClass1 === 1
@@ -316,11 +316,11 @@ function Weekly() {
                 </span>
               </div>
               <div>
-                <span>عنوان کلاس اول:</span>
+                <b>عنوان کلاس اول:</b>
                 <span>{schedule.class1_title}</span>
               </div>
               <div>
-                <span>زمان کلاس دوم:</span>
+                <b>زمان کلاس دوم:</b>
                 <span>
                   {schedule.time2_start
                     ? `${schedule.time2_start} تا ${schedule.time2_end} (
@@ -336,13 +336,13 @@ function Weekly() {
                 </span>
               </div>
               <div>
-                <span>عنوان کلاس دوم:</span>
+                <b>عنوان کلاس دوم:</b>
                 <span>
                   {schedule.class2_title ? schedule.class2_title : "ندارد"}
                 </span>
               </div>
               <div>
-                <span>رشته ی میزبان:</span>
+                <b>رشته ی میزبان:</b>
                 <span>
                   {schedule.host_fos_name ? schedule.host_fos_name : "ندارد"}
                 </span>
@@ -353,11 +353,11 @@ function Weekly() {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <div>
-                <span>روز کلاس اول:</span>
+                <b>روز کلاس اول:</b>
                 <span>{weekDays[schedule.weekDay1 - 1]}</span>
               </div>
               <div>
-                <span>روز کلاس دوم:</span>
+                <b>روز کلاس دوم:</b>
                 <span>
                   {schedule.weekDay2
                     ? weekDays[schedule.weekDay2 - 1]
@@ -365,7 +365,7 @@ function Weekly() {
                 </span>
               </div>
               <div>
-                <span>آخرین تغییر توسط:</span>
+                <b>آخرین تغییر توسط:</b>
                 <span>
                   {schedule.submitter_firstName} {schedule.submitter_lastName}
                 </span>
@@ -385,8 +385,17 @@ function Weekly() {
     }
   }, [singleSchedule]);
 
-  // 
   function makeWeekly(day: any, text: string) {
+    // if no schedules in our day, we create and return empty tds with dayName td, in a tr.
+    // else, start from i = 7 (first time) and map through the schedules.
+    // in the begining, our else clause runs; because our start time at min chance is 7 (or more) and 7 < 7 is incorrect.
+    // in else, until we reach schedule's start, we create empty tds and then create schedule td; and put end time in i.
+    // in last if, if we have no more schedules, we just create empty tds to keep appearance.
+    // in next itration in map, because our schedules sorted by start times, if we have any schedules that less than i,
+    // it means a part or whole of the schedule should place on last schedule; we just put this schedule in another array,
+    // and go to next itration. after map, if we have no schedules in nexRow arrays, we create our tr with created tds and return back.
+    // else, until we have no schedules in our next array, we create trs and finally return back these trs.
+
     if (day.length === 0) {
       let result = [<td>{text}</td>];
       let i = 0;
@@ -516,7 +525,9 @@ function Weekly() {
   return (
     <>
       <div className="weekly-schedules">
-        <button onClick={handleEmailClick}>ایمیل برنامه به استاد</button>
+        {(auth.role === 2 || auth.role === 3) && (
+          <button onClick={handleEmailClick}>ایمیل برنامه به استاد</button>
+        )}
         <div className="filter-side">
           <label htmlFor="">رشته:</label>
           <select

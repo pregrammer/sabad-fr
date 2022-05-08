@@ -29,7 +29,7 @@ function Times() {
 
   return (
     <>
-    {isOpen && <TimeSubmit setIsOpen={setIsOpen} updateRows={setUpdate} />}
+      {isOpen && <TimeSubmit setIsOpen={setIsOpen} updateRows={setUpdate} />}
       <div className="times-container">
         <button onClick={handleClick}>+ افزودن ساعت</button>
         <h2>لیست ساعات درسی:</h2>
@@ -42,11 +42,17 @@ function Times() {
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              times.result?.length &&
+            {!loading && times.result?.length ? (
               times.result.map((time: any) => (
                 <TimeRow key={time.id} time={time} setUpdate={setUpdate} />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={3} className="has-no-row">
+                  زمانی برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

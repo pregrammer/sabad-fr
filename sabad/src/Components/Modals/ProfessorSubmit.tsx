@@ -36,7 +36,7 @@ function ProfessorSubmit({ setEditOpen, editData, updateRows }: any) {
       email: Yup.string()
         .email("آدرس ایمیل نامعتبر است")
         .required("وارد کردن ایمیل الزامی است")
-        .max(150, "حداکثر تعداد کاراکتر 150 می باشد"),
+        .max(100, "حداکثر تعداد کاراکتر 100 می باشد"),
       phoneNumber: Yup.string()
         .required("وارد کردن شماره تلفن الزامی است")
         .max(18, "حداکثر تعداد کاراکتر 18 می باشد"),

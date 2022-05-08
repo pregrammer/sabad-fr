@@ -1,6 +1,6 @@
 @font-face {
   font-family: vazir;
-  src: url(./Fonts/Vazir-Regular.ttf);
+  src: url(./Fonts/Vazir-Regular-FD.ttf);
 }
 
 body {
@@ -28,7 +28,7 @@ body {
   font-size: 22px;
 }
 
-#swal2-html-container{
+#swal2-html-container {
   color: red;
   font-size: 14px;
 }
@@ -73,7 +73,7 @@ body {
   align-items: center;
   margin-top: 40px;
   margin-bottom: 40px;
-  border: 1px solid rgb(193, 193, 193);
+  //border: 1px solid rgb(193, 193, 193);
   background-color: rgb(236, 236, 236);
 
   ul {
@@ -102,8 +102,28 @@ body {
 }
 
 // its about odd or even weekly schedules.
-.not-stable{
+.not-stable {
   background-color: rgb(252, 215, 178);
+}
+
+.has-no-row {
+  color: rgb(234, 0, 0);
+  padding: 30px !important;
+}
+.has-no-content {
+  color: rgb(234, 0, 0);
+  text-align: center;
+  font-family: vazir;
+}
+
+.no-permission{
+  position: absolute;
+  top: 100px;
+  color: red;
+  direction: rtl;
+  font-family: vazir;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 @keyframes spin {

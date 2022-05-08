@@ -4,7 +4,7 @@
 
   > button:first-of-type {
     position: absolute;
-    left: 30px;
+    left: 50px;
     top: 88px;
     font-family: vazir;
     padding: 10px 20px;
@@ -75,10 +75,9 @@
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-    /* tr:hover {
-      color: #fff;
-      background-color: #444040c3;
-    } */
+    tr:hover {
+      background-color: rgb(215, 215, 215);
+    }
 
     th {
       background-color: #04aa6d;

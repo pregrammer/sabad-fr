@@ -4,7 +4,7 @@
 
   > button:first-of-type {
     position: absolute;
-    left: 30px;
+    left: 50px;
     top: 88px;
     font-family: vazir;
     padding: 10px 20px;
@@ -214,10 +214,6 @@
     td {
       font-size: 14px;
       height: 50px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
     }
 
     th {

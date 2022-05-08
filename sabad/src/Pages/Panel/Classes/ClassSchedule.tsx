@@ -69,25 +69,25 @@ function ClassSchedule() {
               }}
             >
               <div>
-                <span>نام درس:</span>
+                <b>نام درس:</b>
                 <span>{schedule.course_name}</span>
               </div>
               <div>
-                <span>کد درس:</span>
+                <b>کد درس:</b>
                 <span>{schedule.course_code}</span>
               </div>
               <div>
-                <span>نام استاد:</span>
+                <b>نام استاد:</b>
                 <span>
                   {schedule.professor_firstName} {schedule.professor_lastName}
                 </span>
               </div>
               <div>
-                <span>گروه درسی:</span>
+                <b>گروه درسی:</b>
                 <span>{schedule.courseGroup}</span>
               </div>
               <div>
-                <span>نیمسال:</span>
+                <b>نیمسال:</b>
                 <span>
                   {schedule.yearPart === 1
                     ? "اول"
@@ -108,15 +108,15 @@ function ClassSchedule() {
               }}
             >
               <div>
-                <span>حداقل ظرفیت کلاس:</span>
+                <b>حداقل ظرفیت کلاس:</b>
                 <span>{schedule.minCapacity} نفر</span>
               </div>
               <div>
-                <span>حداکثر ظرفیت کلاس:</span>
+                <b>حداکثر ظرفیت کلاس:</b>
                 <span>{schedule.maxCapacity} نفر</span>
               </div>
               <div>
-                <span>روز امتحان:</span>
+                <b>روز امتحان:</b>
                 {schedule.testDayName === "ندارد" ? (
                   <span>بدون امتحان</span>
                 ) : (
@@ -127,7 +127,7 @@ function ClassSchedule() {
                 )}
               </div>
               <div>
-                <span>نوبت امتحان:</span>
+                <b>نوبت امتحان:</b>
                 <span>
                   {schedule.testDayPart === 1
                     ? "اول"
@@ -139,7 +139,7 @@ function ClassSchedule() {
                 </span>
               </div>
               <div>
-                <span>رشته:</span>
+                <b>رشته:</b>
                 <span>{schedule.fos_name}</span>
               </div>
             </div>
@@ -152,7 +152,7 @@ function ClassSchedule() {
               }}
             >
               <div>
-                <span>زمان کلاس اول:</span>
+                <b>زمان کلاس اول:</b>
                 <span>
                   {schedule.time1_start} تا {schedule.time1_end} (
                   {schedule.weekKindClass1 === 1
@@ -164,11 +164,11 @@ function ClassSchedule() {
                 </span>
               </div>
               <div>
-                <span>عنوان کلاس اول:</span>
+                <b>عنوان کلاس اول:</b>
                 <span>{schedule.class1_title}</span>
               </div>
               <div>
-                <span>زمان کلاس دوم:</span>
+                <b>زمان کلاس دوم:</b>
                 <span>
                   {schedule.time2_start
                     ? `${schedule.time2_start} تا ${schedule.time2_end} (
@@ -184,13 +184,13 @@ function ClassSchedule() {
                 </span>
               </div>
               <div>
-                <span>عنوان کلاس دوم:</span>
+                <b>عنوان کلاس دوم:</b>
                 <span>
                   {schedule.class2_title ? schedule.class2_title : "ندارد"}
                 </span>
               </div>
               <div>
-                <span>رشته ی میزبان:</span>
+                <b>رشته ی میزبان:</b>
                 <span>
                   {schedule.host_fos_name ? schedule.host_fos_name : "ندارد"}
                 </span>
@@ -201,11 +201,11 @@ function ClassSchedule() {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <div>
-                <span>روز کلاس اول:</span>
+                <b>روز کلاس اول:</b>
                 <span>{weekDays[schedule.weekDay1 - 1]}</span>
               </div>
               <div>
-                <span>روز کلاس دوم:</span>
+                <b>روز کلاس دوم:</b>
                 <span>
                   {schedule.weekDay2
                     ? weekDays[schedule.weekDay2 - 1]
@@ -213,7 +213,7 @@ function ClassSchedule() {
                 </span>
               </div>
               <div>
-                <span>آخرین تغییر توسط:</span>
+                <b>آخرین تغییر توسط:</b>
                 <span>
                   {schedule.submitter_firstName} {schedule.submitter_lastName}
                 </span>
@@ -235,9 +235,7 @@ function ClassSchedule() {
 
   function generateWeeklyTds(day: any) {
     // at first, if our input(day) is empty (we have no schedules at that day) we just create empty td to fix the row(keep appearance);
-    // else
-    // if course.start is 7 (start with 7; goes to 20) , create td with data;
-    // if not, until reach the course.start, create empty td; then create td with data.
+    // else, map through schedules and until reach the course.start, create empty tds; then create td with data.
     // if we are in last element in map, then create empty td to fix the row(keep appearance).
 
     if (day.length === 0) {
@@ -252,51 +250,30 @@ function ClassSchedule() {
       let result: any = [];
       let i = 7;
       day.map((course: any, idx: any, arr: any) => {
-        if (course.start === i) {
-          i = course.end;
-          result.push(
-            <td
-              key={i}
-              colSpan={course.end - course.start}
-              className={course.weekKind !== 1 ? "not-stable" : ""}
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                handleScheduleClick(course.course_name, course.schedule_id)
-              }
-            >
-              {course.course_name +
-                ` (${course.unit})` +
-                (course.weekKind !== 1
-                  ? ` (${course.weekKind === 2 ? "زوج" : "فرد"})`
-                  : "")}
-            </td>
-          );
-        } else {
-          while (i < course.start) {
-            result.push(<td key={i}></td>);
-            i++;
-          }
-
-          result.push(
-            <td
-              key={i}
-              colSpan={course.end - course.start}
-              className={course.weekKind !== 1 ? "not-stable" : ""}
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                handleScheduleClick(course.course_name, course.schedule_id)
-              }
-            >
-              {course.course_name +
-                ` (${course.unit})` +
-                (course.weekKind !== 1
-                  ? ` (${course.weekKind === 2 ? "زوج" : "فرد"})`
-                  : "")}
-            </td>
-          );
-
-          i = course.end;
+        while (i < course.start) {
+          result.push(<td key={i}></td>);
+          i++;
         }
+
+        result.push(
+          <td
+            key={i}
+            colSpan={course.end - course.start}
+            className={course.weekKind !== 1 ? "not-stable" : ""}
+            style={{ cursor: "pointer" }}
+            onClick={() =>
+              handleScheduleClick(course.course_name, course.schedule_id)
+            }
+          >
+            {course.course_name +
+              ` (${course.unit})` +
+              (course.weekKind !== 1
+                ? ` (${course.weekKind === 2 ? "زوج" : "فرد"})`
+                : "")}
+          </td>
+        );
+
+        i = course.end;
         if (idx + 1 === arr.length) {
           while (i < 21) {
             result.push(<td key={i + 1}></td>);

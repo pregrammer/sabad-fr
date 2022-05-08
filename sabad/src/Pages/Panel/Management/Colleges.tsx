@@ -40,30 +40,40 @@ function Colleges() {
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              colleges.result?.length &&
+            {!loading && colleges.result?.length ? (
               colleges.result.map((college: any) => (
-                <CollegeRow key={college.id} college={college} setUpdate={setUpdate} />
-              ))}
+                <CollegeRow
+                  key={college.id}
+                  college={college}
+                  setUpdate={setUpdate}
+                />
+              ))
+            ) : (
+              <tr>
+                <td colSpan={2} className="has-no-row">
+                  دانشکده ای برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
       {Math.ceil(colleges.totallItems / 20) !== 1 &&
         Math.ceil(colleges.totallItems / 20) !== 0 && (
-        <div className="pagiMagi">
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={4}
-            pageCount={
-              colleges.totallItems ? Math.ceil(colleges.totallItems / 20) : 0
-            }
-            previousLabel="<"
-            renderOnZeroPageCount={() => null}
-          />
-        </div>
-      )}
+          <div className="pagiMagi">
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={4}
+              pageCount={
+                colleges.totallItems ? Math.ceil(colleges.totallItems / 20) : 0
+              }
+              previousLabel="<"
+              renderOnZeroPageCount={() => null}
+            />
+          </div>
+        )}
       {loading && <LoadingModal />}
     </>
   );

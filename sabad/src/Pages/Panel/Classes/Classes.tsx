@@ -7,6 +7,7 @@ import ClassRow from "../../../Components/Panel/Classes/ClassRow";
 import ClassSubmit from "../../../Components/Modals/ClassSubmit";
 import useAxiosFunction from "../../../Helpers/useAxiosFunction";
 import LoadingModal from "../../../Components/Modals/LoadingModal";
+import { useAuth } from "../../../Components/Contexts/AuthProvider";
 
 function Classes() {
   const [editOpen, setEditOpen] = useState(false);
@@ -14,10 +15,11 @@ function Classes() {
   const [classes, loading, axiosFetch]: any = useAxiosFunction();
   const [pageNumber, setPageNumber] = useState(1);
   const [update, setUpdate] = useState(false);
+  const { auth } = useAuth();
   const [filters, setFilters] = useState({
     college_id: "all",
-    hasProjector: "1",
-    capacity: "3050",
+    hasProjector: "all",
+    capacity: "all",
   });
 
   useEffect(() => {
@@ -71,7 +73,9 @@ function Classes() {
         <ClassSubmit setEditOpen={setEditOpen} updateRows={setUpdate} />
       )}
       <div className="classes">
-        <button onClick={handleProfSubmit}>+ افزودن کلاس</button>
+        {auth.role === 1 && (
+          <button onClick={handleProfSubmit}>+ افزودن کلاس</button>
+        )}
         <div className="filter-side">
           <label htmlFor="">دانشکده:</label>
           <select
@@ -107,7 +111,7 @@ function Classes() {
             <option value="all">همه</option>
             <option value="30">کمتر از 30 نفر</option>
             <option value="3050">30 تا 50 نفر</option>
-            <option value="50">بیشتر از 30 نفر</option>
+            <option value="50">بیشتر از 50 نفر</option>
           </select>
           <button onClick={handleFilterClick}>
             فیلتر
@@ -122,15 +126,21 @@ function Classes() {
               <th>پروژکتور</th>
               <th>ظرفیت</th>
               <th>دانشکده</th>
-              <th>برنامه / تغییرات</th>
+              <th>برنامه{auth.role === 1 && " / تغییرات"}</th>
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              classes.result?.length &&
+            {!loading && classes.result?.length ? (
               classes.result.map((kelas: any) => (
                 <ClassRow key={kelas.id} kelas={kelas} setUpdate={setUpdate} />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={5} className="has-no-row">
+                  کلاسی برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

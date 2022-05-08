@@ -30,11 +30,11 @@ function EditProfile({ setIsEditProfileOpen, editProfileRef }: any) {
       email: Yup.string()
         .email("آدرس ایمیل نامعتبر است")
         .required("وارد کردن ایمیل الزامی است")
-        .max(150, "حداکثر تعداد کاراکتر 150 می باشد"),
+        .max(100, "حداکثر تعداد کاراکتر 100 می باشد"),
       phoneNumber: Yup.string()
         .required("وارد کردن شماره تلفن الزامی است")
         .max(18, "حداکثر تعداد کاراکتر 18 می باشد"),
-      password: Yup.string().max(200, "حداکثر تعداد کاراکتر 200 می باشد"),
+      password: Yup.string().max(150, "حداکثر تعداد کاراکتر 150 می باشد"),
       pass_confirm: Yup.string()
         .when("password", {
           is: (password: any) => (password ? true : false),

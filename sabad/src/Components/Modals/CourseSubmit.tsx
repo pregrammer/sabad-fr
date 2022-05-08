@@ -30,7 +30,7 @@ function CourseSubmit({ setEditOpen, editData, updateRows }: any) {
     validationSchema: Yup.object({
       name: Yup.string()
         .required("وارد کردن نام درس الزامی است")
-        .max(50, "حداکثر تعداد کاراکتر 50 می باشد"),
+        .max(60, "حداکثر تعداد کاراکتر 60 می باشد"),
     }),
     onSubmit: (values) => {
       if (!editData) {
@@ -92,7 +92,7 @@ function CourseSubmit({ setEditOpen, editData, updateRows }: any) {
           &times;
         </span>
         <form onSubmit={formik.handleSubmit}>
-          <h4>{editData ? "ویرایش" : "افزودن"} استاد</h4>
+          <h4>{editData ? "ویرایش" : "افزودن"} درس</h4>
           <div className="group">
             <div>
               <label>نام درس:</label>

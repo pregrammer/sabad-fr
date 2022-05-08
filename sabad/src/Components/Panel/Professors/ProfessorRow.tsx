@@ -6,10 +6,12 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import ProfessorSubmit from "../../Modals/ProfessorSubmit";
 import LoadingModal from "../../Modals/LoadingModal";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 function ProfessorRow({ professor, setUpdate }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, loading, axiosFetch]: any = useAxiosFunction();
+  const { auth } = useAuth();
 
   function handleUpdateClick() {
     setIsOpen((prev: boolean) => !prev);
@@ -70,10 +72,12 @@ function ProfessorRow({ professor, setUpdate }: any) {
             : "دکتری"}
         </td>
         <td>{professor.phoneNumber}</td>
-        <td>
-          <FontAwesomeIcon icon={faEdit} onClick={handleUpdateClick} />
-          <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
-        </td>
+        {auth.role === 1 && (
+          <td>
+            <FontAwesomeIcon icon={faEdit} onClick={handleUpdateClick} />
+            <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
+          </td>
+        )}
       </tr>
       {isOpen && (
         <ProfessorSubmit

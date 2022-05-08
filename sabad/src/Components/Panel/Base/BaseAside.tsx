@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../../logo.png";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 function BaseAside({ asideRef }: any) {
+  const { auth } = useAuth();
+
   return (
     <aside className="base-aside" ref={asideRef}>
       <div className="top-aside">
@@ -41,22 +44,26 @@ function BaseAside({ asideRef }: any) {
         >
           لیست اساتید
         </NavLink>
-        <NavLink
-          to={"/panel/schedules"}
-          className={({ isActive }) => {
-            return isActive ? "tab" : "un-tab";
-          }}
-        >
-          برنامه ریزی درسی
-        </NavLink>
-        <NavLink
-          to={"/panel/management/users"}
-          className={({ isActive }) => {
-            return isActive ? "tab" : "un-tab";
-          }}
-        >
-          مدیریت سیستم
-        </NavLink>
+        {(auth.role === 2 || auth.role === 3) && (
+          <NavLink
+            to={"/panel/schedules"}
+            className={({ isActive }) => {
+              return isActive ? "tab" : "un-tab";
+            }}
+          >
+            برنامه ریزی درسی
+          </NavLink>
+        )}
+        {auth.role === 1 && (
+          <NavLink
+            to={"/panel/management/users"}
+            className={({ isActive }) => {
+              return isActive ? "tab" : "un-tab";
+            }}
+          >
+            مدیریت سیستم
+          </NavLink>
+        )}
       </div>
     </aside>
   );

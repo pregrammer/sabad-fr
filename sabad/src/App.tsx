@@ -49,18 +49,16 @@ function App() {
                 <Route path="sent" element={<Sent />} />
               </Route>
               <Route path="reports" element={<Reports />} />
-              <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
-                <Route path="courses" element={<Courses />} />
-              </Route>
+              <Route path="courses" element={<Courses />} />
               <Route path="classes" element={<Classes />} />
               <Route path="professors" element={<Professors />} />
               <Route path="class-schedule/:classId" element={<ClassSchedule />} />
-              <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
+              <Route element={<HasRole allowedRoles={[2, 3]} />}>
                 <Route path="schedules" element={<Schedules />} />
               </Route>
               <Route path="weekly-schedules/:semId" element={<Weekly />} />
               <Route path="test-schedules/:semId" element={<Test />} />
-              <Route element={<HasRole allowedRoles={[1, 2, 3, 4]} />}>
+              <Route element={<HasRole allowedRoles={[1]} />}>
                 <Route path="management" element={<Management />}>
                   <Route path="users" element={<Users />} />
                   <Route path="field-of-studies" element={<FieldOfStudies />} />

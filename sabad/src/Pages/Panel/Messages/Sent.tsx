@@ -25,28 +25,30 @@ function Sent() {
   return (
     <>
       <div className="sent-container">
-        {!loading &&
-          messages.result?.length &&
+        {!loading && messages.result?.length ? (
           messages.result.map((message: any) => (
             <Message key={message.id} message={message} setUpdate={setUpdate} />
-          ))}
+          ))
+        ) : (
+          <div className="has-no-content">پیامی برای نمایش وجود ندارد</div>
+        )}
       </div>
       {Math.ceil(messages.totallItems / 20) !== 1 &&
         Math.ceil(messages.totallItems / 20) !== 0 && (
-        <div className="pagiMagi">
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={4}
-            pageCount={
-              messages.totallItems ? Math.ceil(messages.totallItems / 20) : 0
-            }
-            previousLabel="<"
-            renderOnZeroPageCount={() => null}
-          />
-        </div>
-      )}
+          <div className="pagiMagi">
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={4}
+              pageCount={
+                messages.totallItems ? Math.ceil(messages.totallItems / 20) : 0
+              }
+              previousLabel="<"
+              renderOnZeroPageCount={() => null}
+            />
+          </div>
+        )}
       {loading && <LoadingModal />}
     </>
   );

@@ -12,7 +12,7 @@ function Base() {
   const editProfileRef: any = useRef(null);
 
   useEffect(() => {
-    // Login should has overflow: hidden on its body; we change it here.
+    // Login should has 'overflow: "hidden"' on its body; we change it here.
     document.body.style.overflow = "auto";
     return () => {
       document.body.style.overflow = "hidden";

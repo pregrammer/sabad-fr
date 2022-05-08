@@ -17,7 +17,7 @@ function Courses() {
   const [update, setUpdate] = useState(false);
   const { auth } = useAuth();
   const [filters, setFilters] = useState({
-    fos: auth.field_of_study_id ? auth.field_of_study_id : "all",
+    fos: auth.field_of_study_id,
     termNumber: "all",
     kind: "all",
   });
@@ -27,7 +27,6 @@ function Courses() {
       method: "GET",
       url: `/field_of_studies?forSelect=true`,
     });
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -48,6 +47,13 @@ function Courses() {
   }
 
   function handleFilterClick() {
+    // if user refresh the page, auth removed. we instead use first fos.
+    if (!filters.fos) {
+      setFilters((prev: any) => ({
+        ...prev,
+        fos: fosList[0].id,
+      }));
+    }
     setUpdate((prev: boolean) => !prev);
   }
 
@@ -73,11 +79,12 @@ function Courses() {
         <CourseSubmit setEditOpen={setEditOpen} updateRows={setUpdate} />
       )}
       <div className="courses">
-        <button onClick={handleProfSubmit}>+ افزودن درس</button>
+        {auth.role === 2 && (
+          <button onClick={handleProfSubmit}>+ افزودن درس</button>
+        )}
         <div className="filter-side">
           <label htmlFor="">رشته:</label>
           <select name="fos" onChange={handleFilterChange} value={filters.fos}>
-            <option value="all">همه</option>
             {!fosLoading &&
               fosList &&
               fosList.map((fos: any) => (
@@ -128,19 +135,25 @@ function Courses() {
               <th>مقطع</th>
               <th>پیش نیاز</th>
               <th>هم نیاز</th>
-              <th>تغییرات</th>
+              {auth.role === 2 && <th>تغییرات</th>}
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              courses.result?.length &&
+            {!loading && courses.result?.length ? (
               courses.result.map((course: any) => (
                 <CourseRow
                   key={course.id}
                   course={course}
                   setUpdate={setUpdate}
                 />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={9} className="has-no-row">
+                  درسی برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

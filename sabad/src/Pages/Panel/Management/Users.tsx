@@ -45,11 +45,17 @@ function Users() {
             </tr>
           </thead>
           <tbody>
-            {!loading &&
-              users.result?.length &&
+            {!loading && users.result?.length ? (
               users.result.map((user: any) => (
                 <UserRow key={user.id} user={user} setUpdate={setUpdate} />
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6} className="has-no-row">
+                  کاربری برای نمایش وجود ندارد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
