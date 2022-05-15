@@ -7,7 +7,10 @@ function Messages() {
     <>
       <div className="messages-base">
         <MessagesAside />
-        <div className="content">
+        <div
+          className="content"
+          style={{ minHeight: `${window.innerHeight - 100}px` }}
+        >
           <Outlet />
         </div>
       </div>

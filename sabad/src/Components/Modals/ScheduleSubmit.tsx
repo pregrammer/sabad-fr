@@ -237,7 +237,9 @@ function ScheduleSubmit({ setEditOpen, editData, updateRows }: any) {
           <div><b>نام استاد: </b><small>${
             schedule.prof_lastName + " " + schedule.prof_firstName
           }</small></div>
-          <div><b>زمان: </b><small>${schedule.time_start} تا ${schedule.time_end} (${
+          <div><b>زمان: </b><small>${schedule.time_start} تا ${
+              schedule.time_end
+            } (${
               schedule.weekKind === 1
                 ? "ثابت"
                 : schedule.weekKind === 2
@@ -569,7 +571,7 @@ function ScheduleSubmit({ setEditOpen, editData, updateRows }: any) {
                 >
                   <option value="-1">ندارد</option>
                   {users.map((user: any) => {
-                    if (user.role === 2 || user.role === 3) {
+                    if (user.role === 3) {
                       return (
                         <option key={user.id} value={user.id}>
                           {user.firstName} {user.lastName} (مدیر گروه{" "}

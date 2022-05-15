@@ -91,10 +91,13 @@ function Login() {
         draggable
         pauseOnHover
       />
-      <div className="login-design">
-        <div className="design-top"></div>
-
-        <form onSubmit={formik.handleSubmit}>
+      <div className="login-page">
+        <form
+          onSubmit={formik.handleSubmit}
+          className={
+            window.screen.width > 480 ? "login-form" : "login-form login-mobile"
+          }
+        >
           <img src={logo} alt="logo" />
 
           <p>سامانه ی برنامه ریزی درسی (سبد)</p>
@@ -114,7 +117,7 @@ function Login() {
             onBlur={formik.handleBlur}
           />
 
-          <label htmlFor="password">رمز عبوز:</label>
+          <label htmlFor="password">رمز عبور:</label>
           {formik.touched.password && formik.errors.password && (
             <span className="error">{formik.errors.password}</span>
           )}
@@ -132,8 +135,6 @@ function Login() {
             ورود{isLoading && <div className="login-loader"></div>}
           </button>
         </form>
-
-        <div className="design-down"></div>
       </div>
     </>
   );

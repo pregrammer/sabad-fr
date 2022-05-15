@@ -1,116 +1,97 @@
-$topLoginColor: linear-gradient(to left, #1172ef, #fff);
-$downLoginColor: linear-gradient(to right, #172b4d, #fff);
-
-body {
-  overflow: hidden;
+.login-page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #172B4D , #fff);
 }
 
-.login-design {
-  position: relative;
-  bottom: 200px;
+form.login-form {
+  width: 380px;
+  height: 450px;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  .design-top {
-    width: 120%;
-    height: 630px;
-    transform: rotate(-7deg);
-    background-image: $topLoginColor;
+  font-family: vazir;
+  direction: rtl;
+
+  img {
+    width: 120px;
+    height: 120px;
+    margin-right: 50%;
+    transform: translateX(50%);
   }
 
-  .design-down {
-    width: 120%;
-    height: 630px;
-    transform: rotate(-7deg);
-    background-image: $downLoginColor;
+  p:first-of-type {
+    margin-right: 50%;
+    transform: translateX(50%);
+    font-size: 14px;
+    margin-bottom: 25px;
   }
 
-  form {
-    width: 380px;
-    height: 450px;
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 36%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  label,
+  input[type="email"],
+  input[type="password"] {
+    margin-right: 33px;
+  }
 
+  input {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 300px;
+    padding: 8px;
+    border: 1px solid rgb(166, 156, 156);
+    border-radius: 7px;
+  }
+
+  .error {
+    color: red;
+    margin-right: 15px;
+    font-size: 13.5px;
+  }
+  .error:first-of-type {
+    margin-right: 28px;
+  }
+
+  button[type="submit"] {
+    margin-right: 50%;
+    transform: translateX(50%);
+    margin-top: 13px;
+    padding: 8px 45px;
+    cursor: pointer;
+    background-color: #1172ef;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
     font-family: vazir;
-    direction: rtl;
-
-    img {
-      width: 120px;
-      height: 120px;
-      margin-right: 50%;
-      transform: translateX(50%);
-    }
-
-    p:first-of-type {
-      margin-right: 50%;
-      transform: translateX(50%);
-      font-size: 14px;
-      margin-bottom: 25px;
-    }
-
-    label,
-    input[type="email"],
-    input[type="password"] {
-      margin-right: 33px;
-    }
-
-    input {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      width: 300px;
-      padding: 8px;
-      border: 1px solid rgb(166, 156, 156);
-      border-radius: 7px;
-    }
-
-    .error {
-      color: red;
-      margin-right: 15px;
-      font-size: 13.5px;
-    }
-    .error:first-of-type {
-      margin-right: 28px;
-    }
-
-    button[type="submit"] {
-      margin-right: 50%;
-      transform: translateX(50%);
-      margin-top: 13px;
-      padding: 8px 45px;
-      cursor: pointer;
-      background-color: #1172ef;
-      border: none;
-      border-radius: 7px;
-      color: #fff;
-      font-family: vazir;
-      transition: all 0.2s;
-    }
-
-    button[type="submit"]:hover {
-      box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.19);
-    }
+    transition: all 0.2s;
   }
 
-  .login-loader {
-    border: 2px solid #f3f3f3; /* Light grey */
-    border-top: 2px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    position: relative;
-    top: 4px;
-    right: 10px;
-    animation: spin 2s linear infinite;
+  button[type="submit"]:hover {
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.19);
   }
 }
 
-@media screen and (max-width: 480px) {
-  .login-design form {
-    left: 53%;
-  }
+form.login-mobile {
+  transform: scale(2.3);
+  left: 31%;
+  top: 35%;
+}
+
+.login-loader {
+  border: 2px solid #f3f3f3; /* Light grey */
+  border-top: 2px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  right: 10px;
+  animation: spin 2s linear infinite;
 }

@@ -7,7 +7,10 @@ function Management() {
     <>
       <div className="management-base">
         <ManagementAside />
-        <div className="content">
+        <div
+          className="content"
+          style={{ minHeight: `${window.innerHeight - 100}px` }}
+        >
           <Outlet />
         </div>
       </div>

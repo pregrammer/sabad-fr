@@ -113,7 +113,7 @@ function Test() {
       if (result.isConfirmed) {
         axiosFetch2({
           method: "POST",
-          url: `/schedules/weekly-email`,
+          url: `/schedules/test-email`,
           requestConfig: {
             data: {
               professor_id: professor[0].id,

@@ -11,14 +11,6 @@ function Base() {
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const editProfileRef: any = useRef(null);
 
-  useEffect(() => {
-    // Login should has 'overflow: "hidden"' on its body; we change it here.
-    document.body.style.overflow = "auto";
-    return () => {
-      document.body.style.overflow = "hidden";
-    };
-  }, []);
-
   return (
     <>
       <ToastContainer
@@ -46,7 +38,7 @@ function Base() {
         setIsEditProfileOpen={setIsEditProfileOpen}
       />
 
-      <BaseAside asideRef={asideRef}/>
+      <BaseAside asideRef={asideRef} />
 
       <Outlet />
     </>

@@ -7,7 +7,6 @@ $untab-text-color: #474747;
 
   aside {
     width: 17%;
-    height: 100vh;
     position: fixed;
     right: 0;
     top: 50px;
@@ -50,7 +49,6 @@ $untab-text-color: #474747;
   .content {
     background-color: #fff;
     width: 83%;
-    min-height: 88vh;
     padding-top: 94px;
     direction: rtl;
 
@@ -74,7 +72,8 @@ $untab-text-color: #474747;
         background-color: rgb(15, 143, 26);
       }
       .close-form {
-        margin-right: 35% !important;
+        padding: 7px 20px !important;
+        margin-right: 37% !important;
         color: #fff !important;
         background-color: red !important;
       }
