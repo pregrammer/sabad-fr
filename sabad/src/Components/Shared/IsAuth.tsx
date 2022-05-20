@@ -16,10 +16,10 @@ const IsAuth = () => {
         const response = await axios.get("/users/user");
         if (response.status === 200) {
           setAuth(response.data.user);
-          setIsLoading(false);
           setIsSigned(true);
         }
       } catch (error) {
+      } finally {
         setIsLoading(false);
       }
     }

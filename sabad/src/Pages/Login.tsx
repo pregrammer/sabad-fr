@@ -8,11 +8,13 @@ import axios from "../api/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useMsgCount } from "../Components/Contexts/MsgCountProvider";
 
 function Login() {
   const { setAuth } = useAuth();
   const emailRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const {setRefreshCount} = useMsgCount()
 
   const navigate = useNavigate();
   const location: any = useLocation();
@@ -43,6 +45,7 @@ function Login() {
 
         if (response.status === 200) {
           setAuth(response.data.user);
+          setRefreshCount((prev: boolean) => !prev);
           navigate(from, { replace: true });
         }
       } catch (error: any) {
