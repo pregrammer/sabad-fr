@@ -24,6 +24,7 @@ import IsAuth from "./Components/Shared/IsAuth";
 import MsgCountProvider from "./Components/Contexts/MsgCountProvider";
 import Semesters from "./Pages/Panel/Management/Semesters";
 import Professors from "./Pages/Panel/Professors";
+import Login from "./Pages/Login";
 
 /* const ROLES = {
   admin: 1,
@@ -37,7 +38,8 @@ function App() {
     <BrowserRouter>
       <MsgCountProvider>
         <Routes>
-          <Route path="/" element={<IsAuth />} />
+          {/* <Route path="/" element={<IsAuth />} /> */}
+          <Route path="/" element={<Login />} />
 
           {/* protected routes */}
           <Route element={<RequireAuth />}>

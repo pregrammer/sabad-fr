@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import useAxiosFunction from "../../Helpers/useAxiosFunction";
 import LoadingModal from "../Modals/LoadingModal";
+import { useLocation } from "react-router-dom";
 
 const msgCountContext = createContext({
   count: 0,
@@ -15,12 +16,15 @@ const MsgCountProvider = ({ children }: any) => {
   const [count, setCount]: [any, any] = useState(0);
   const [refreshCount, setRefreshCount] = useState(false);
   const [data, loading, axiosFetch]: any = useAxiosFunction();
+  const location = useLocation();
 
   useEffect(() => {
-    axiosFetch({
-      method: "GET",
-      url: "/messages/unseen-count",
-    });
+    if (location.pathname !== "/") {
+      axiosFetch({
+        method: "GET",
+        url: "/messages/unseen-count",
+      });
+    }
   }, [refreshCount]);
 
   useEffect(() => {
